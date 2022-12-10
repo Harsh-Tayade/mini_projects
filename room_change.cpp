@@ -150,7 +150,7 @@ int main()
     initwindow(1600,900);
     room(0);
     getch();
-    closegraph();
+    //closegraph();
     delay(50000);
     return 0;
 }
