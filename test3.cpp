@@ -75,7 +75,9 @@ void room(int ch)
         break;
         
         default:
-        cout<<"NULL"<<endl;
+            settextstyle(6,4,1);
+            setcolor(CYAN);
+            outtextxy(400,400,"NULL");
         break;
 
     }
