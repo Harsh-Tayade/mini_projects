@@ -42,6 +42,21 @@ void room(int ch)
                 cleardevice();
                 room(0);
             }
+            else if(c=='d'||c=='D')
+            {
+                cleardevice();
+                room(2);
+            }
+            else if(c=='s'||c=='S')
+            {
+                cleardevice();
+                room(3);
+            }
+            else if(c=='a'||c=='A')
+            {
+                cleardevice();
+                room(4);
+            }
         break;
         
         case 2:
@@ -51,6 +66,21 @@ void room(int ch)
             {
                 cleardevice();
                 room(0);
+            }
+            else if(c=='w'||c=='W')
+            {
+                cleardevice();
+                room(1);
+            }
+            else if(c=='s'||c=='S')
+            {
+                cleardevice();
+                room(3);
+            }
+            else if(c=='a'||c=='A')
+            {
+                cleardevice();
+                room(4);
             }
         break;
 
@@ -62,6 +92,21 @@ void room(int ch)
                 cleardevice();
                 room(0);
             }
+            else if(c=='w'||c=='W')
+            {
+                cleardevice();
+                room(1);
+            }
+            else if(c=='d'||c=='D')
+            {
+                cleardevice();
+                room(2);
+            }
+            else if(c=='a'||c=='A')
+            {
+                cleardevice();
+                room(4);
+            }
         break;
         
         case 4:
@@ -71,6 +116,21 @@ void room(int ch)
             {
                 cleardevice();
                 room(0);
+            }
+            else if(c=='w'||c=='W')
+            {
+                cleardevice();
+                room(1);
+            }
+            else if(c=='d'||c=='D')
+            {
+                cleardevice();
+                room(2);
+            }
+            else if(c=='s'||c=='S')
+            {
+                cleardevice();
+                room(3);
             }
         break;
         
