@@ -7,8 +7,8 @@
 #include <time.h>
 using namespace std;
 
-int lenght = 2;
-int lenghtmax = 6; 
+int lenght = 1;
+int lenghtmax = 2; 
 
 int x1 = 30;
 int y = 170; 
@@ -20,17 +20,16 @@ bool playing = true;
 
 int fruitx;
 int fruity;
-bool eaten = false; 
-
 int bfruitx;
 int bfruity;
-bool beaten = false;
+bool eaten = false;
+bool beaten = false; 
 
 vector<int> snakex;
 vector<int> snakey; 
 int SnakeColor=15;
 
-int i = 3;
+int i = 1;
 int imax = 0; 
 
 char score[50];
@@ -43,45 +42,58 @@ void graphic();
 void move();
 void start();
 void update(); 
-void restart();
 
 void start()
 {
     sprintf(score, "SCORE : %d ", score1);
 
     srand(time(NULL));
-    initwindow(1050, 1062, "Snake");
+    initwindow(350, 354, "Snake");
 
     setcolor(GREEN);
     setfillstyle(SOLID_FILL, GREEN);
-    rectangle(0, 0, 1020, 30);
+    rectangle(0, 0, 340, 10);
     floodfill(5, 5, GREEN);
 
     setcolor(WHITE);
-    //settextstyle(8,HORIZ_DIR,40);
-    outtextxy(500, 0, score);
+    outtextxy(10, 0, score);
 
     fruitx = rand() % 34;
     fruity = rand() % 34;
-    fruity = fruity * 30;
-    fruitx = fruitx * 30;
+    fruity = fruity * 10;
+    fruitx = fruitx * 10;
     
     if(fruity == 0){
-        fruity = fruity+30;
+        fruity = fruity+10;
     }
-    
-
     setcolor(RED);
     setfillstyle(SOLID_FILL, RED);
-    rectangle(fruitx, fruity, fruitx + 30, fruity + 30);
-    floodfill(fruitx + 15, fruity + 15, RED);
+    rectangle(fruitx, fruity, fruitx + 10, fruity + 10);
+    floodfill(fruitx + 5, fruity + 5, RED);
+
+    
+    
+    bfruitx = rand() % 34;
+    bfruity = rand() % 34;
+    bfruity = bfruity * 10;
+    bfruitx = bfruitx * 10;
+    
+    if(bfruity == 0){
+        bfruity = bfruity+10;
+    }
+    setcolor(CYAN);
+    setfillstyle(SOLID_FILL, CYAN);
+    rectangle(bfruitx, bfruity, bfruitx + 10, bfruity + 10);
+    floodfill(bfruitx + 5, bfruity + 5, CYAN);
+    
+
 }
 
 void update() 
 {
 
     sprintf(score, "SCORE : %d ", score1);
-    if (speed_control<60)
+    if (speed_control<50)
     {
         speed_control=score1*2;
     }
@@ -90,6 +102,7 @@ void update()
     snakex.push_back(x1);
     snakey.push_back(y); 
     fruit();
+    bfruit();
     move();
     graphic();
 
@@ -109,10 +122,10 @@ void move()
 
     last = direc;
 
-    if (direc == 's' || direc == 'S' || direc == 40)   y = y + 30;
-    if (direc == 'a' || direc == 'A' || direc == 37)   x1 = x1 - 30;
-    if (direc == 'w' || direc == 'W' || direc == 38)   y = y - 30;
-    if (direc == 'd' || direc == 'D' || direc == 39)   x1 = x1 + 30;
+    if (direc == 's' || direc == 'S' || direc == 40)   y = y + 10;
+    if (direc == 'a' || direc == 'A' || direc == 37)   x1 = x1 - 10;
+    if (direc == 'w' || direc == 'W' || direc == 38)   y = y - 10;
+    if (direc == 'd' || direc == 'D' || direc == 39)   x1 = x1 + 10;
 }
 
 void graphic() 
@@ -121,34 +134,34 @@ void graphic()
 
     setcolor(BLUE);
     setfillstyle(SOLID_FILL, BLUE);
-    rectangle(0, 0, 1050, 30);			
+    rectangle(0, 0, 350, 10);			
     floodfill(5, 5, BLUE);
 
     setcolor(WHITE);
-    outtextxy(30, 0, score); 
+    outtextxy(10, 0, score); 
 
     setcolor(RED);
     setfillstyle(SOLID_FILL, RED);
-    rectangle(fruitx, fruity, fruitx + 30, fruity + 30); 
-    floodfill(fruitx + 15, fruity + 15, RED);
-    
-    setcolor(WHITE);
-    setfillstyle(SOLID_FILL, WHITE);
-    rectangle(x1, y, x1 + 30, y + 30); 
-    floodfill(x1 + 15, y + 15, WHITE);
+    rectangle(fruitx, fruity, fruitx + 10, fruity + 10); 
+    floodfill(fruitx + 5, fruity + 5, RED);
 
     setcolor(CYAN);
     setfillstyle(SOLID_FILL, CYAN);
     rectangle(bfruitx, bfruity, bfruitx + 10, bfruity + 10); 
-    floodfill(bfruitx + 5, bfruitx + 5, CYAN);
+    floodfill(bfruitx + 5, bfruity + 5, CYAN);
+    
+    setcolor(WHITE);
+    setfillstyle(SOLID_FILL, WHITE);
+    rectangle(x1, y, x1 + 10, y + 10); 
+    floodfill(x1 + 5, y + 5, WHITE);
 
 
     for (int lenght = lenghtmax; lenght > 0; lenght--)
     {
         setcolor(SnakeColor);
         setfillstyle(SOLID_FILL, SnakeColor);
-        rectangle(snakex[i], snakey[i], snakex[i] + 30, snakey[i] + 30); 
-        floodfill(snakex[i] + 15, snakey[i] + 15, SnakeColor);
+        rectangle(snakex[i], snakey[i], snakex[i] + 10, snakey[i] + 10); 
+        floodfill(snakex[i] + 5, snakey[i] + 5, SnakeColor);
         i--;
     }
 
@@ -247,7 +260,6 @@ void fruit()
         floodfill(fruitx + 5, fruitx + 5, RED);
     }
 }
-
 void bfruit() 
 {
     if (x1 == bfruitx && y == bfruity)
@@ -300,12 +312,12 @@ int main()
         {
             update();
 
-            if (x1 >= 1020 || x1 < 0 || y >= 1020 || y < 30) 
+            if (x1 >= 340 || x1 < 0 || y >= 340 || y < 10) 
             {
                 playing = false; 
             }
 
-            if (lenghtmax > 9 || direc != '-' && direc != 'w' && direc != 'a' && direc != 's' && direc != 'd' && direc != 'W' && direc != 'A' && direc != 'S' && direc != 'D' && direc != 37 && direc != 38 && direc != 39 && direc != 40)
+            if (lenghtmax > 3 || direc != '-' && direc != 'w' && direc != 'a' && direc != 's' && direc != 'd' && direc != 'W' && direc != 'A' && direc != 'S' && direc != 'D')
             {
                 for (lenght = lenghtmax; lenght >= 0; lenght--)
                 {
@@ -323,6 +335,7 @@ int main()
 
         if (playing == false)
         {
+
             cleardevice();
             setcolor(WHITE);
             outtextxy(70, 170, "YOU LOST, FINAL ");
